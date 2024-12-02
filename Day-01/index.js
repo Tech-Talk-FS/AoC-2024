@@ -4,18 +4,22 @@ const path = require('path');
 const filePath = path.join(__dirname, 'puzzle.txt');
 
 const sortArrays = (leftArr,rightArr) => {
-    console.log('Left Array:', leftArr.length = 10); // Set to 10 for speed
-    console.log('Right Array:', rightArr.length = 10 );
+    console.log('Left Array:', leftArr.length = 50); // Set to 10 for speed
+    console.log('Right Array:', rightArr.length = 50 );
     const leftAsc = leftArr.sort((a, b) => a - b)
     const rightAsc = rightArr.sort((a, b) => a - b)
     console.log('Left Array:', leftAsc); // Set to 10 for speed
     console.log('Right Array:', rightAsc);
 
-    // const makePairs = leftArr.map((id,index)=>{
-    //     return [id, rightArr[index]]
-    // }).sort((a,b)=> a[0]- b[0])
-
-    // console.log("here", makePairs )
+    let total = 0 
+    for (let i = 0; i < leftAsc.length; i++) {
+        const left = leftAsc[i];
+        const right = rightAsc[i];
+        const distance = Math.abs(left - right)
+        console.log("both", distance);
+        total += distance
+    }
+    console.log("total", total); //104294
 }
 
 try {
@@ -36,11 +40,8 @@ try {
     const numbers = line.split(' ');
     return parseInt(numbers[1]);
   });
-  
+
   sortArrays(left,right)
 } catch (err) {
   console.error('Error reading the file:', err);
 }
-
-// sort arrays accending 
-// for each one on that index add them together
